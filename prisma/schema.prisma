@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model pollen_data {
+  p1    Float @db.Real
+  p2    Float @db.Real
+  p3    Float @db.Real
+  p4    Float @db.Real
+  p5    Float @db.Real
+  p6    Float @db.Real
+  p7    Float @db.Real
+  p8    Float @db.Real
+  p9    Float @db.Real
+  p10   Float @db.Real
+  p11   Float @db.Real
+  p12   Float @db.Real
+  index Float @id @db.Real
+}

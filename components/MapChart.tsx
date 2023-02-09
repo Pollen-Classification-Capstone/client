@@ -7,6 +7,8 @@ import {
   Marker,
 } from "react-simple-maps";
 
+//https://www.react-simple-maps.io/examples/zoom-pan/
+
 const geoUrl =
   "https://raw.githubusercontent.com/deldersveld/topojson/master/continents/north-america.json";
 
