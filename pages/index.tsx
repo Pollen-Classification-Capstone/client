@@ -9,7 +9,7 @@ import prisma from "../lib/prisma";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home(props) {
+export default function Home(props: any) {
   const [data, setData] = useState();
   const fetchData = async (e: React.SyntheticEvent) => {
     fetch("api/QUERY_TABLE")

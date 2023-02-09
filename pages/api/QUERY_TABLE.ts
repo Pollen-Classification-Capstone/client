@@ -8,7 +8,7 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse) {
     users = prisma.pollen_data.findFirst();
     res.json(users);
     console.log("API SUCCESS DEBUG NOTE");
-  } catch (e) {
+  } catch (e: any) {
     console.log(e.message);
   }
 }
