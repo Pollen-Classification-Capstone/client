@@ -56,6 +56,7 @@ export default function Home(props: any) {
               {" "}
               Fetch Latest Data
             </button>
+            <div>{JSON.stringify(props)}</div>
           </div>
         </div>
       </div>
