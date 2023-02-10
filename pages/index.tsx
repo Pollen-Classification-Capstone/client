@@ -39,13 +39,19 @@ export default function Home(props: any, result: any) {
     filteredDataObject = hamiltonData;
   }
   const fetchData = async (e: React.SyntheticEvent) => {};
-
   return (
     <div className="">
-      <div className={`rounded text-sm wrap flex p-4 justify-center`}>
-        <div className="border-2 w-3/12">
+      <Image
+        src="/images/the-pollen-project-low-resolution-logo-color-on-transparent-background.png"
+        width={100}
+        height={50}
+        alt="The Pollen Project Logo"
+        className="p-1"
+      />
+      <div className={`rounded text-sm wrap flex justify-center p-4 `}>
+        <div className="border-2  justify-center w-2/12">
           <MapChartWrapper setSelectedLocation={setSelectedLocation} />
-          <div className="px-2 flex-nowrap">
+          <div className="px-2 flex-nowrap  ">
             <div className="">Location Selected:</div>
             <select
               className={`rounded bg-gray-300 py-1 w-6/12`}
@@ -81,7 +87,7 @@ export default function Home(props: any, result: any) {
             </div>
           </div>
         </div>
-        <div className="w-10/12 px-8">
+        <div className=" w-8/12 px-8">
           <GraphChart
             dataLocation={selectedLocation}
             graphData={filteredDataObject}
