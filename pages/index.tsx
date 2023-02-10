@@ -87,7 +87,7 @@ export default function Home(props: any, result: any) {
             </div>
           </div>
         </div>
-        <div className="w-1/2">
+        <div className="">
           <GraphChart
             dataLocation={selectedLocation}
             graphData={filteredDataObject}
