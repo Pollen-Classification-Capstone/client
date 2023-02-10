@@ -17,16 +17,11 @@ export default function Home(props: any) {
     "Additional Locations Coming Soon!",
   ];
 
-  const fetchData = async (e: React.SyntheticEvent) => {
-    fetch("api/QUERY_TABLE")
-      .then((data) => {
-        console.log("Success");
-        return data.json();
-      })
-      .then((data) => {
-        setData(data);
-      });
-  };
+  const hamiltonData = props.feed.filter((element: any) => element.index > 10);
+
+  const torontoData = props.feed.filter((element: any) => element.index < 10);
+
+  const fetchData = async (e: React.SyntheticEvent) => {};
 
   return (
     <div className="">
@@ -56,7 +51,6 @@ export default function Home(props: any) {
               {" "}
               Fetch Latest Data
             </button>
-            <div>{JSON.stringify(props)}</div>
           </div>
         </div>
       </div>
@@ -65,7 +59,7 @@ export default function Home(props: any) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const feed = await prisma.pollen_data.findMany({ take: 10 });
+  const feed = await prisma.pollen_data.findMany({ take: 20 });
   return {
     props: { feed },
   };
