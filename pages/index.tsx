@@ -87,7 +87,7 @@ export default function Home(props: any, result: any) {
             </div>
           </div>
         </div>
-        <div className="">
+        <div className="w-10/12">
           <GraphChart
             dataLocation={selectedLocation}
             graphData={filteredDataObject}
