@@ -17,7 +17,7 @@ export const NavBar = ({}: NavBarProps) => {
     <div className="">
       <Image
         src="/images/the-pollen-project-low-resolution-logo-color-on-transparent-background.png"
-        width={100}
+        width={150}
         height={50}
         alt="The Pollen Project Logo"
         className="p-1  "
