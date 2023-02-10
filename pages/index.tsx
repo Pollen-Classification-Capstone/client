@@ -18,17 +18,17 @@ export default function Home(props: any, result: any) {
   let filteredDataObject;
 
   const hamiltonDataRaw = props.feed.filter(
-    (element: any) => element.index > 200
+    (element: any) => element.index > 5000
   );
   const torontoDataRaw = props.feed.filter(
-    (element: any) => element.index < 200
+    (element: any) => element.index < 5000
   );
 
   const hamiltonData = props.result.filter(
-    (element: any) => element.index > 200
+    (element: any) => element.index > 5000
   );
   const torontoData = props.result.filter(
-    (element: any) => element.index < 200
+    (element: any) => element.index < 5000
   );
 
   if (selectedLocation === "Toronto") {
