@@ -49,7 +49,7 @@ export default function Home(props: any, result: any) {
         className="p-1"
       />
       <div className={`rounded text-sm wrap flex justify-center p-4 `}>
-        <div className="border-2  justify-center w-2/12">
+        <div className="border-2  justify-center w-4/12">
           <MapChartWrapper setSelectedLocation={setSelectedLocation} />
           <div className="px-2 flex-nowrap  ">
             <div className="">Location Selected:</div>
@@ -87,7 +87,7 @@ export default function Home(props: any, result: any) {
             </div>
           </div>
         </div>
-        <div className=" w-8/12 px-8">
+        <div className=" w-11/12 px-8">
           <GraphChart
             dataLocation={selectedLocation}
             graphData={filteredDataObject}
