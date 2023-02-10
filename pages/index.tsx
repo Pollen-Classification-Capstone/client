@@ -42,7 +42,7 @@ export default function Home(props: any, result: any) {
 
   return (
     <div className="">
-      <div className={`rounded text-sm wrap flex p-4`}>
+      <div className={`rounded text-sm wrap flex p-4 justify-center`}>
         <div className="border-2 w-3/12">
           <MapChartWrapper setSelectedLocation={setSelectedLocation} />
           <div className="px-2 flex-nowrap">
@@ -94,7 +94,7 @@ export default function Home(props: any, result: any) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const feed = await prisma.pollen_data.findMany({ take: 1000 });
+  const feed = await prisma.pollen_data.findMany({ take: 10000 });
   const result = await prisma.$queryRaw`SELECT 
 index,
 CASE greatest (p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12)
