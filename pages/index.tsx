@@ -7,6 +7,7 @@ import { useState } from "react";
 import { GetServerSideProps } from "next";
 import prisma from "../lib/prisma";
 import GraphChart from "@/components/GraphChart";
+import NavBar from "@/components/NavBar";
 
 export default function Home(props: any, result: any) {
   const [data, setData] = useState();
@@ -41,15 +42,12 @@ export default function Home(props: any, result: any) {
   const fetchData = async (e: React.SyntheticEvent) => {};
   return (
     <div className="">
-      <Image
-        src="/images/the-pollen-project-low-resolution-logo-color-on-transparent-background.png"
-        width={100}
-        height={50}
-        alt="The Pollen Project Logo"
-        className="p-1"
-      />
-      <div className={`rounded text-sm flex justify-center  `}>
-        <div className="border-2   w-96">
+      <div className="">
+        {" "}
+        <NavBar />
+      </div>
+      <div className={`rounded text-sm flex `}>
+        <div className="border-2   w-5/12">
           <MapChartWrapper setSelectedLocation={setSelectedLocation} />
           <div className="px-2 flex-nowrap  ">
             <div className="">Location Selected:</div>
@@ -87,7 +85,7 @@ export default function Home(props: any, result: any) {
             </div>
           </div>
         </div>
-        <div className="w-10/12">
+        <div className="">
           <GraphChart
             dataLocation={selectedLocation}
             graphData={filteredDataObject}
