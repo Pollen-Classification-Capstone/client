@@ -8,22 +8,35 @@ import { GetServerSideProps } from "next";
 import prisma from "../lib/prisma";
 import GraphChart from "@/components/GraphChart";
 
-export default function Home(props: any) {
+export default function Home(props: any, result: any) {
   const [data, setData] = useState();
   const [selectedLocation, setSelectedLocation] = useState("Toronto");
   const [rawData, setRawData] = useState(false);
   const locations = ["Toronto", "Hamilton"];
 
   let rawDataObject;
+  let filteredDataObject;
 
-  const hamiltonData = props.feed.filter((element: any) => element.index > 10);
+  const hamiltonDataRaw = props.feed.filter(
+    (element: any) => element.index > 200
+  );
+  const torontoDataRaw = props.feed.filter(
+    (element: any) => element.index < 200
+  );
 
-  const torontoData = props.feed.filter((element: any) => element.index < 10);
+  const hamiltonData = props.result.filter(
+    (element: any) => element.index > 200
+  );
+  const torontoData = props.result.filter(
+    (element: any) => element.index < 200
+  );
 
   if (selectedLocation === "Toronto") {
-    rawDataObject = torontoData;
+    rawDataObject = torontoDataRaw;
+    filteredDataObject = torontoData;
   } else if (selectedLocation === "Hamilton") {
-    rawDataObject = hamiltonData;
+    rawDataObject = hamiltonDataRaw;
+    filteredDataObject = hamiltonData;
   }
   const fetchData = async (e: React.SyntheticEvent) => {};
 
@@ -57,7 +70,10 @@ export default function Home(props: any) {
             </button>
           </div>
         </div>
-        <GraphChart dataLocation={selectedLocation} graphData={props} />
+        <GraphChart
+          dataLocation={selectedLocation}
+          graphData={filteredDataObject}
+        />
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex"
           onClick={() => setRawData(!rawData)}
@@ -72,8 +88,26 @@ export default function Home(props: any) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const feed = await prisma.pollen_data.findMany({ take: 20 });
+  const feed = await prisma.pollen_data.findMany({ take: 1000 });
+  const result = await prisma.$queryRaw`SELECT 
+index,
+CASE greatest (p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12)
+WHEN p1  THEN '1'
+WHEN p2  THEN '2'
+WHEN p3  THEN '3'
+WHEN p4  THEN '4'
+WHEN p5  THEN '5'
+WHEN p6  THEN '6'
+WHEN p7  THEN '7'
+WHEN p8  THEN '8'
+WHEN p9  THEN '9'
+WHEN p10  THEN '10'
+WHEN p11  THEN '11'
+WHEN p12  THEN '12'
+END AS Selected_type
+FROM public.pollen_data;`;
+
   return {
-    props: { feed },
+    props: { feed, result },
   };
 };
