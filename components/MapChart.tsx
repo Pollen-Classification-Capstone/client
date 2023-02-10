@@ -23,7 +23,7 @@ export const MapChartWrapper = ({ setSelectedLocation }: MapChartProps) => {
       <ComposableMap projection="geoMercator">
         <ZoomableGroup
           center={[-82.862, 46.844]}
-          zoom={4}
+          zoom={6}
           onMoveStart={({ coordinates, zoom }) => {
             console.log(coordinates, zoom);
           }}

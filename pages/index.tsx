@@ -42,47 +42,53 @@ export default function Home(props: any, result: any) {
 
   return (
     <div className="">
-      <div className={`flex-nowrap rounded text-sm `}>
-        <div className="border-2 w-8/12">
+      <div className={`rounded text-sm wrap flex p-4`}>
+        <div className="border-2 w-3/12">
           <MapChartWrapper setSelectedLocation={setSelectedLocation} />
-        </div>
-        <div className="px-2 flex-nowrap">
-          <div className="">Location Selected:</div>
-          <select
-            className={`rounded bg-gray-300 py-1 w-6/12`}
-            name="Select From List"
-            id="Select From List"
-            value={selectedLocation}
-            onChange={(e) => setSelectedLocation(e.target.value)}
-          >
-            {locations.map((location) => (
-              <option value={location}> {location} </option>
-            ))}
-          </select>
-          <div className="py-2">
-            {" "}
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex"
-              onClick={fetchData}
+          <div className="px-2 flex-nowrap">
+            <div className="">Location Selected:</div>
+            <select
+              className={`rounded bg-gray-300 py-1 w-6/12`}
+              name="Select From List"
+              id="Select From List"
+              value={selectedLocation}
+              onChange={(e) => setSelectedLocation(e.target.value)}
             >
-              {" "}
-              Fetch Latest Data
-            </button>
+              {locations.map((location) => (
+                <option value={location}> {location} </option>
+              ))}
+            </select>
+            <div className="flex justify-between py-4 ">
+              <div className="  ">
+                {" "}
+                <button
+                  className="bg-blue-500 hover:bg-blue-700 text-white p-1 font-bold rounded flex"
+                  onClick={fetchData}
+                >
+                  {" "}
+                  Fetch Latest Data
+                </button>
+              </div>
+              <div>
+                <button
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold  p-1 rounded flex"
+                  onClick={() => setRawData(!rawData)}
+                >
+                  {" "}
+                  {rawData ? "Hide Raw Data" : "Reveal Raw Data"}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-        <GraphChart
-          dataLocation={selectedLocation}
-          graphData={filteredDataObject}
-        />
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex"
-          onClick={() => setRawData(!rawData)}
-        >
-          {" "}
-          {rawData ? "Hide Raw Data" : "Reveal Raw Data"}
-        </button>
-        {rawData && JSON.stringify(rawDataObject)}
+        <div className="w-10/12 px-8">
+          <GraphChart
+            dataLocation={selectedLocation}
+            graphData={filteredDataObject}
+          />
+        </div>
       </div>
+      <div className="">{rawData && JSON.stringify(rawDataObject)}</div>
     </div>
   );
 }
