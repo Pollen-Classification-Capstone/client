@@ -6,21 +6,25 @@ import MapChart, { MapChartWrapper } from "../components/MapChart";
 import { useState } from "react";
 import { GetServerSideProps } from "next";
 import prisma from "../lib/prisma";
+import GraphChart from "@/components/GraphChart";
 
 export default function Home(props: any) {
   const [data, setData] = useState();
-  const [selectedLocation, setSelectedLocation] = useState("");
+  const [selectedLocation, setSelectedLocation] = useState("Toronto");
+  const [rawData, setRawData] = useState(false);
+  const locations = ["Toronto", "Hamilton"];
 
-  const locations = [
-    "Toronto",
-    "Hamilton",
-    "Additional Locations Coming Soon!",
-  ];
+  let rawDataObject;
 
   const hamiltonData = props.feed.filter((element: any) => element.index > 10);
 
   const torontoData = props.feed.filter((element: any) => element.index < 10);
 
+  if (selectedLocation === "Toronto") {
+    rawDataObject = torontoData;
+  } else if (selectedLocation === "Hamilton") {
+    rawDataObject = hamiltonData;
+  }
   const fetchData = async (e: React.SyntheticEvent) => {};
 
   return (
@@ -53,6 +57,15 @@ export default function Home(props: any) {
             </button>
           </div>
         </div>
+        <GraphChart dataLocation={selectedLocation} graphData={props} />
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex"
+          onClick={() => setRawData(!rawData)}
+        >
+          {" "}
+          {rawData ? "Hide Raw Data" : "Reveal Raw Data"}
+        </button>
+        {rawData && JSON.stringify(rawDataObject)}
       </div>
     </div>
   );

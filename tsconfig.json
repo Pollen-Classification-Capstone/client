@@ -19,6 +19,13 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "components/BarGraphChart.jsx",
+    "components/BarGraph.js",
+    "components/BarGraph.jsx"
+  ],
   "exclude": ["node_modules"]
 }
