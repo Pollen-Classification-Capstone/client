@@ -20,7 +20,7 @@ export const NavBar = ({}: NavBarProps) => {
         width={100}
         height={50}
         alt="The Pollen Project Logo"
-        className="p-1 "
+        className="p-1  "
       />
     </div>
   );

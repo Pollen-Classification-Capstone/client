@@ -42,7 +42,7 @@ export default function Home(props: any, result: any) {
   const fetchData = async (e: React.SyntheticEvent) => {};
   return (
     <div className="">
-      <div className="">
+      <div className="bg-gradient-to-r from-white to-pollenblue">
         {" "}
         <NavBar />
       </div>
