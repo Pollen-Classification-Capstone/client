@@ -104,7 +104,7 @@ export const GraphChart = ({ dataLocation, graphData }: GraphChartProps) => {
   };
 
   return (
-    <div className="p-0">
+    <div className="px-12">
       <Bar options={options} data={data} width={600} height={550} />
     </div>
   );
