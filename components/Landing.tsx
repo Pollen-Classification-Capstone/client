@@ -14,11 +14,11 @@ import Image from "next/image";
 export const LandingPage = ({}) => {
   return (
     <div className="">
-      <div className="absolute">
+      <div className="relative">
         <Image
           src="/images/bee-flower.jpg"
           width={2000}
-          height={1500}
+          height={400}
           alt="The Pollen Project Logo"
           className=""
         />

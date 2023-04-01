@@ -21,7 +21,7 @@ export default function Home(props: any, result: any) {
       <div>
         <Landing />
       </div>
-      <div>{<SectionOne />}</div>
+      <div className="flex">{<SectionOne />}</div>
     </div>
   );
 }

@@ -15,8 +15,6 @@ module.exports = {
       },
     },
   },
-  backgroundImage: {
-    "bee-image": "url('/images/bee-flower.jpg')",
-  },
+  backgroundImage: {},
   plugins: [],
 };
