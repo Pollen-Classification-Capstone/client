@@ -22,8 +22,8 @@ export const MapChartWrapper = ({ setSelectedLocation }: MapChartProps) => {
     <div>
       <ComposableMap projection="geoMercator">
         <ZoomableGroup
-          center={[-82.862, 46.844]}
-          zoom={6}
+          center={[-91.862, 46.844]}
+          zoom={3}
           onMoveStart={({ coordinates, zoom }) => {
             console.log(coordinates, zoom);
           }}
@@ -81,6 +81,81 @@ export const MapChartWrapper = ({ setSelectedLocation }: MapChartProps) => {
               onClick={() => setSelectedLocation("Hamilton")}
             >
               {"Hamilton"}
+            </text>
+          </Annotation>
+          <Marker coordinates={[-122.2827, 49.1944]}>
+            <circle r={1} fill="#FF5533" />
+          </Marker>
+          <Annotation
+            subject={[-122.2827, 49.1944]}
+            dx={-20}
+            dy={-10}
+            connectorProps={{
+              stroke: "#FF5533",
+              strokeWidth: 0.25,
+              strokeLinecap: "round",
+            }}
+          >
+            <text
+              className="cursor-pointer"
+              x="-1"
+              textAnchor="end"
+              alignmentBaseline="middle"
+              fill="#F53"
+              fontSize={5}
+              onClick={() => setSelectedLocation("Vancouver")}
+            >
+              {"Vancouver"}
+            </text>
+          </Annotation>
+          <Marker coordinates={[-73.967, 41.1944]}>
+            <circle r={1} fill="#FF5533" />
+          </Marker>
+          <Annotation
+            subject={[-73.967, 41.1944]}
+            dx={-20}
+            dy={-5}
+            connectorProps={{
+              stroke: "#FF5533",
+              strokeWidth: 0.25,
+              strokeLinecap: "round",
+            }}
+          >
+            <text
+              className="cursor-pointer"
+              x="-1"
+              textAnchor="end"
+              alignmentBaseline="middle"
+              fill="#F53"
+              fontSize={5}
+              onClick={() => setSelectedLocation("New York City")}
+            >
+              {"New York City"}
+            </text>
+          </Annotation>
+          <Marker coordinates={[-80.167, 26.1944]}>
+            <circle r={1} fill="#FF5533" />
+          </Marker>
+          <Annotation
+            subject={[-79.967, 26.1944]}
+            dx={-20}
+            dy={-5}
+            connectorProps={{
+              stroke: "#FF5533",
+              strokeWidth: 0.25,
+              strokeLinecap: "round",
+            }}
+          >
+            <text
+              className="cursor-pointer"
+              x="-1"
+              textAnchor="end"
+              alignmentBaseline="middle"
+              fill="#F53"
+              fontSize={5}
+              onClick={() => setSelectedLocation("Miami")}
+            >
+              {"Miami"}
             </text>
           </Annotation>
           <Marker coordinates={[-79.667, 43.1944]}>

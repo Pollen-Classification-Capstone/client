@@ -1,15 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { Bar } from "react-chartjs-2";
-import Image from "next/image";
+
 import { GetServerSideProps } from "next";
 import GraphChart from "./GraphChart";
 import MapChartWrapper from "./MapChart";
@@ -18,22 +8,52 @@ export const DataSection = () => {
   const [data, setData] = useState();
   const [selectedLocation, setSelectedLocation] = useState("Toronto");
   const [rawData, setRawData] = useState(false);
-  const locations = ["Toronto", "Hamilton"];
+  const locations = [
+    "Toronto",
+    "Hamilton",
+    "Vancouver",
+    "New York City",
+    "Miami",
+  ];
 
   let rawDataObject;
   let filteredDataObject;
+  const dataFetch = {
+    feed: ["feed"],
+    result: ["result"],
+  };
 
+  //Feed
   const hamiltonDataRaw = dataFetch.feed.filter(
     (element: any) => element.index > 5000
   );
   const torontoDataRaw = dataFetch.feed.filter(
     (element: any) => element.index < 5000
   );
+  const vancouverDataRaw = dataFetch.feed.filter(
+    (element: any) => element.index < 5000
+  );
+  const newYorkCityDataRaw = dataFetch.feed.filter(
+    (element: any) => element.index < 5000
+  );
+  const miamiDataRaw = dataFetch.feed.filter(
+    (element: any) => element.index < 5000
+  );
 
+  //Result
   const hamiltonData = dataFetch.result.filter(
     (element: any) => element.index > 5000
   );
   const torontoData = dataFetch.result.filter(
+    (element: any) => element.index < 5000
+  );
+  const vancouverData = dataFetch.result.filter(
+    (element: any) => element.index < 5000
+  );
+  const newYorkCityData = dataFetch.result.filter(
+    (element: any) => element.index < 5000
+  );
+  const miamiData = dataFetch.result.filter(
     (element: any) => element.index < 5000
   );
 
@@ -43,10 +63,19 @@ export const DataSection = () => {
   } else if (selectedLocation === "Hamilton") {
     rawDataObject = hamiltonDataRaw;
     filteredDataObject = hamiltonData;
+  } else if (selectedLocation === "Vancouver") {
+    rawDataObject = hamiltonDataRaw;
+    filteredDataObject = hamiltonData;
+  } else if (selectedLocation === "New York City") {
+    rawDataObject = hamiltonDataRaw;
+    filteredDataObject = hamiltonData;
+  } else if (selectedLocation === "Miami") {
+    rawDataObject = hamiltonDataRaw;
+    filteredDataObject = hamiltonData;
   }
   const fetchData = async (e: React.SyntheticEvent) => {};
   return (
-    <div className={`rounded text-sm flex `}>
+    <div className={`rounded text-sm flex  bg-white`}>
       <div className="border-2   w-5/12">
         <MapChartWrapper setSelectedLocation={setSelectedLocation} />
         <div className="px-2 flex-nowrap  ">

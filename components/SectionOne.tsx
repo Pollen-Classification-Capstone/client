@@ -10,6 +10,7 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import Image from "next/image";
+import Link from "next/link";
 
 export const LandingPage = ({}) => {
   return (
@@ -42,10 +43,13 @@ export const LandingPage = ({}) => {
           different areas around the world and help give accurate up to date
           measurements. See for yourself with our live demo!
         </div>
-        <button className=" mb-6  py-2 px-10 text-md bg-white rounded-xl    bottom-">
+        <Link
+          href="/#home"
+          className=" mb-12   py-2 px-10 text-md bg-white rounded-xl    "
+        >
           {" "}
           Try it out!{" "}
-        </button>
+        </Link>
       </div>
     </div>
   );

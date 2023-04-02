@@ -10,6 +10,7 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import Image from "next/image";
+import Link from "next/link";
 
 export const LandingPage = ({}) => {
   return (
@@ -29,10 +30,12 @@ export const LandingPage = ({}) => {
           {" "}
           Welcome To the future of Pollen Research{" "}
         </div>
-        <button className="absolute mb-6 left-40 p-2 text-md bg-white rounded-xl    bottom-64">
-          {" "}
+        <Link
+          href="/#home"
+          className="absolute mb-6 left-40 p-2 text-md bg-white rounded-xl    bottom-64"
+        >
           Find Out More{" "}
-        </button>
+        </Link>
       </div>
     </div>
   );

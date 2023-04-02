@@ -10,6 +10,7 @@ import GraphChart from "@/components/GraphChart";
 import NavBar from "@/components/NavBar";
 import Landing from "@/components/Landing";
 import SectionOne from "@/components/SectionOne";
+import DataSection from "@/components/DataSection";
 
 export default function Home(props: any, result: any) {
   return (
@@ -22,6 +23,10 @@ export default function Home(props: any, result: any) {
         <Landing />
       </div>
       <div className="flex">{<SectionOne />}</div>
+      <div id="home">
+        {" "}
+        <DataSection />
+      </div>
     </div>
   );
 }
