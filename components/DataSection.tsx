@@ -1,10 +1,10 @@
+import { GetServerSideProps } from "next";
 import React, { useEffect, useState } from "react";
 
-import { GetServerSideProps } from "next";
 import GraphChart from "./GraphChart";
 import MapChartWrapper from "./MapChart";
 
-export const DataSection = () => {
+export const DataSection = (props: any) => {
   const [data, setData] = useState();
   const [selectedLocation, setSelectedLocation] = useState("Toronto");
   const [rawData, setRawData] = useState(false);
@@ -24,37 +24,37 @@ export const DataSection = () => {
   };
 
   //Feed
-  const hamiltonDataRaw = dataFetch.feed.filter(
-    (element: any) => element.index > 5000
+  const hamiltonDataRaw = props.props.feed.filter(
+    (element: any) => 0 < element.index && element.index < 2000
   );
-  const torontoDataRaw = dataFetch.feed.filter(
-    (element: any) => element.index < 5000
+  const torontoDataRaw = props.props.feed.filter(
+    (element: any) => 2000 < element.index && element.index < 4000
   );
-  const vancouverDataRaw = dataFetch.feed.filter(
-    (element: any) => element.index < 5000
+  const vancouverDataRaw = props.props.feed.filter(
+    (element: any) => 4000 < element.index && element.index < 6000
   );
-  const newYorkCityDataRaw = dataFetch.feed.filter(
-    (element: any) => element.index < 5000
+  const newYorkCityDataRaw = props.props.feed.filter(
+    (element: any) => 6000 < element.index && element.index < 8000
   );
-  const miamiDataRaw = dataFetch.feed.filter(
-    (element: any) => element.index < 5000
+  const miamiDataRaw = props.props.feed.filter(
+    (element: any) => 8000 < element.index && element.index < 10000
   );
 
   //Result
-  const hamiltonData = dataFetch.result.filter(
-    (element: any) => element.index > 5000
+  const hamiltonData = props.props.result.filter(
+    (element: any) => 0 < element.index && element.index < 2000
   );
-  const torontoData = dataFetch.result.filter(
-    (element: any) => element.index < 5000
+  const torontoData = props.props.result.filter(
+    (element: any) => 2000 < element.index && element.index < 4000
   );
-  const vancouverData = dataFetch.result.filter(
-    (element: any) => element.index < 5000
+  const vancouverData = props.props.result.filter(
+    (element: any) => 4000 < element.index && element.index < 6000
   );
-  const newYorkCityData = dataFetch.result.filter(
-    (element: any) => element.index < 5000
+  const newYorkCityData = props.props.result.filter(
+    (element: any) => 6000 < element.index && element.index < 8000
   );
-  const miamiData = dataFetch.result.filter(
-    (element: any) => element.index < 5000
+  const miamiData = props.props.result.filter(
+    (element: any) => 8000 < element.index && element.index < 10000
   );
 
   if (selectedLocation === "Toronto") {
@@ -64,16 +64,18 @@ export const DataSection = () => {
     rawDataObject = hamiltonDataRaw;
     filteredDataObject = hamiltonData;
   } else if (selectedLocation === "Vancouver") {
-    rawDataObject = hamiltonDataRaw;
-    filteredDataObject = hamiltonData;
+    rawDataObject = vancouverDataRaw;
+    filteredDataObject = vancouverData;
   } else if (selectedLocation === "New York City") {
-    rawDataObject = hamiltonDataRaw;
-    filteredDataObject = hamiltonData;
+    rawDataObject = newYorkCityDataRaw;
+    filteredDataObject = newYorkCityData;
   } else if (selectedLocation === "Miami") {
-    rawDataObject = hamiltonDataRaw;
-    filteredDataObject = hamiltonData;
+    rawDataObject = miamiDataRaw;
+    filteredDataObject = miamiData;
   }
-  const fetchData = async (e: React.SyntheticEvent) => {};
+  const fetchData = async () => {
+    //rerender page hack
+  };
   return (
     <div className={`rounded text-sm flex  bg-white`}>
       <div className="border-2   w-5/12">
