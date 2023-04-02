@@ -10,6 +10,7 @@ import NavBar from "@/components/NavBar";
 import Landing from "@/components/Landing";
 import SectionOne from "@/components/SectionOne";
 import DataSection from "@/components/DataSection";
+import prisma from "@/lib/prisma";
 
 export default function Home(props: any) {
   return (
