@@ -122,7 +122,7 @@ export const DataSection = (props: any) => {
           graphData={filteredDataObject}
         />
       </div>
-      {/* <div className="">{rawData && JSON.stringify(rawDataObject)}</div> */}
+      <div className="">{rawData && JSON.stringify(rawDataObject)}</div>
     </div>
   );
 };
